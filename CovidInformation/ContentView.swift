@@ -13,9 +13,11 @@ struct ContentView: View {
     var body: some View {
         TabView {
             GlobalView().tabItem {
+                Image(systemName: "globe")
                 Text("Global")
             }
             CountriesView().tabItem {
+                Image(systemName: "flag.fill")
                 Text("Countries")
             }
         }
@@ -76,10 +78,18 @@ struct CountriesView: View {
                 self.searchText.isEmpty ? true : "\($0)".contains(self.searchText)
             }, id: \.country) { country in
                 VStack {
-                    Text(country.country).font(.title)
-                    Text("Cases: \(country.cases) | Today: \(country.todayCases) | Active: \(country.active)").font(.caption)
-                    Text("Deaths: \(country.deaths) | Today: \(country.todayDeaths)").font(.caption)
-                    Text("Recovered: \(country.recovered) | Critical: \(country.critical)").font(.caption)
+                    Text(country.country)
+                        .font(.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Cases: \(country.cases) | Today: \(country.todayCases) | Active: \(country.active)")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Deaths: \(country.deaths) | Today: \(country.todayDeaths)")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Recovered: \(country.recovered) | Critical: \(country.critical)")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
